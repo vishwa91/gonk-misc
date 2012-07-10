@@ -41,15 +41,6 @@ LOCAL_SRC_FILES    := fakeperm.cpp
 LOCAL_SHARED_LIBRARIES := libbinder libutils
 include $(BUILD_EXECUTABLE)
 
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := mountvol.sh
-LOCAL_MODULE_TAGS  := optional eng
-LOCAL_MODULE_CLASS := EXECUTABLES
-LOCAL_SRC_FILES    := mountvol.sh
-LOCAL_MODULE_PATH  := $(TARGET_OUT_EXECUTABLES)
-include $(BUILD_PREBUILT)
-
 $(OUT_DOCS)/api-stubs-timestamp:
 	mkdir -p `dirname $@`
 	touch $@
@@ -132,5 +123,6 @@ $(LOCAL_BUILT_MODULE): $(TARGET_CRTBEGIN_DYNAMIC_O) $(TARGET_CRTEND_O) $(addpref
 	export EXTRA_INCLUDE="-include $(UNICODE_HEADER_PATH)" && \
 	echo $(MAKE) -C $(GECKO_PATH) -f client.mk -s && \
 	$(MAKE) -C $(GECKO_PATH) -f client.mk -s && \
+	rm -f $(GECKO_OBJDIR)/dist/b2g-*.tar.gz && \
 	$(MAKE) -C $(GECKO_OBJDIR) package && \
 	mkdir -p $(@D) && cp $(GECKO_OBJDIR)/dist/b2g-*.tar.gz $@
