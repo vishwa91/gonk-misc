@@ -45,6 +45,13 @@ ac_add_options --enable-update-packaging
 ac_add_options --enable-media-plugins
 ac_add_options --enable-omx-plugin
 ac_add_options --with-arch=armv6
+ac_add_options --with-thumb=no
+ac_add_options --with-fpu=toolchain-default
+ac_add_options --with-float-abi=toolchain-default
+ac_add_options --disable-neon
+ac_add_options --disable-methodjit
+#ac_add_options --disable-polyic
+#ac_add_options --disable-monoic
 
 # Enable dump() from JS.
 export CXXFLAGS="-DMOZ_ENABLE_JS_DUMP $EXTRA_INCLUDE"
